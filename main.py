@@ -9,11 +9,15 @@ CHARACTERS: str = (
 )
 
 
-def get_password_length() -> int:
+def get_password_length(min: int, max: int) -> int:
     try:
-        return int(input("Enter password length (Leave empty for random length): "))
+        return int(
+            input(
+                f"Enter password length (Leave empty for random length between {min}-{max}): "
+            )
+        )
     except ValueError:
-        return randint(10, 20)
+        return randint(min, max)
 
 
 def get_shuffled_characters(length: int) -> list[str]:
@@ -24,7 +28,9 @@ def get_shuffled_characters(length: int) -> list[str]:
 
 def main():
     loaded_config = Config.load()
-    password_length = get_password_length()
+    password_length = get_password_length(
+        loaded_config.min_random_range, loaded_config.max_random_range
+    )
     chosen_characters = get_shuffled_characters(password_length)
     password = "".join(chosen_characters)
     if loaded_config.copy_to_clipboard:
