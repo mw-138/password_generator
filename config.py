@@ -7,8 +7,8 @@ SAVE_PATH: str = "config.json"
 @dataclass
 class Config:
     copy_to_clipboard: bool = True
-    min_random_range: int = 10
-    max_random_range: int = 20
+    min_random_length: int = 10
+    max_random_length: int = 20
 
     def save(self):
         with open(SAVE_PATH, "w") as f:

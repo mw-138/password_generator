@@ -29,7 +29,7 @@ def get_shuffled_characters(length: int) -> list[str]:
 def main():
     loaded_config = Config.load()
     password_length = get_password_length(
-        loaded_config.min_random_range, loaded_config.max_random_range
+        loaded_config.min_random_length, loaded_config.max_random_length
     )
     chosen_characters = get_shuffled_characters(password_length)
     password = "".join(chosen_characters)
