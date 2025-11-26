@@ -31,8 +31,8 @@ def main():
     password_length = get_password_length(
         loaded_config.min_random_length, loaded_config.max_random_length
     )
-    chosen_characters = get_shuffled_characters(password_length)
-    password = "".join(chosen_characters)
+    shuffled_characters = get_shuffled_characters(password_length)
+    password = "".join(shuffled_characters)
     if loaded_config.copy_to_clipboard:
         pyperclip.copy(password)
         print(f"{password} copied to clipboard")
