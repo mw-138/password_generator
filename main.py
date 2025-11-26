@@ -27,18 +27,16 @@ def get_shuffled_characters(length: int) -> list[str]:
 
 
 def main():
-    loaded_config = Config.load()
-    password_length = get_password_length(
-        loaded_config.min_random_length, loaded_config.max_random_length
-    )
+    cfg = Config.load()
+    password_length = get_password_length(cfg.min_random_length, cfg.max_random_length)
     shuffled_characters = get_shuffled_characters(password_length)
     password = "".join(shuffled_characters)
-    if loaded_config.copy_to_clipboard:
+    if cfg.copy_to_clipboard:
         pyperclip.copy(password)
         print(f"{password} copied to clipboard")
     else:
         print(password)
-    loaded_config.save()
+    cfg.save()
 
 
 if __name__ == "__main__":
