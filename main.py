@@ -5,7 +5,7 @@ import pyperclip
 from config import Config
 
 CHARACTERS: str = (
-    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789_!?^&%$£@#"
+    "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*-_=+"
 )
 
 
