@@ -20,6 +20,4 @@ class Config:
             with open(SAVE_PATH, "r") as f:
                 return cls(**json.load(f))
         except FileNotFoundError:
-            new_config = cls()
-            new_config.save()
-            return new_config
+            return cls()
