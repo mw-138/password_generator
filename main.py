@@ -36,15 +36,8 @@ def get_password_length(min: int, max: int) -> int:
         return randint(min, max)
 
 
-def get_shuffled_characters(cfg: Config, length: int) -> list[str]:
-    chars = list(
-        get_characters(
-            cfg.include_lowercase,
-            cfg.include_uppercase,
-            cfg.include_numbers,
-            cfg.include_symbols,
-        )
-    )
+def get_shuffled_characters(characters: str, length: int) -> list[str]:
+    chars = list(characters)
     shuffle(chars)
     return chars[:length]
 
@@ -52,7 +45,15 @@ def get_shuffled_characters(cfg: Config, length: int) -> list[str]:
 def main():
     cfg = Config.load()
     password_length = get_password_length(cfg.min_random_length, cfg.max_random_length)
-    shuffled_characters = get_shuffled_characters(cfg, password_length)
+    shuffled_characters = get_shuffled_characters(
+        get_characters(
+            cfg.include_lowercase,
+            cfg.include_uppercase,
+            cfg.include_numbers,
+            cfg.include_symbols,
+        ),
+        password_length,
+    )
     password = "".join(shuffled_characters)
     if cfg.copy_to_clipboard:
         pyperclip.copy(password)
