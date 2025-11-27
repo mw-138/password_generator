@@ -134,5 +134,5 @@ dmypy.json
 Thumbs.db
 
 # Project specific
-config.csv
 *.csv
+*.json
