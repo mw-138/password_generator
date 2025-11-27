@@ -9,6 +9,10 @@ class Config:
     copy_to_clipboard: bool = True
     min_random_length: int = 10
     max_random_length: int = 20
+    include_lowercase: bool = True
+    include_uppercase: bool = True
+    include_numbers: bool = True
+    include_symbols: bool = True
 
     def save(self):
         with open(SAVE_PATH, "w") as f:
