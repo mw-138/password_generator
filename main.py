@@ -37,6 +37,10 @@ def get_password_length(min: int, max: int) -> int:
         return randint(min, max)
 
 
+def get_password_identifier() -> str:
+    return input("Enter password identifier (Optional): ")
+
+
 def get_shuffled_characters(characters: str, length: int) -> list[str]:
     chars = list(characters)
     shuffle(chars)
@@ -55,6 +59,7 @@ def main():
         ),
         password_length,
     )
+    password_identifier = get_password_identifier()
     password = "".join(shuffled_characters)
     if cfg.copy_to_clipboard:
         pyperclip.copy(password)
@@ -62,7 +67,7 @@ def main():
     else:
         print(password)
     if cfg.export_to_file:
-        PasswordExporter.export(password)
+        PasswordExporter.export(password, password_identifier)
     cfg.save()
 
 
