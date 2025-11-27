@@ -4,6 +4,7 @@ from random import randint, shuffle
 import pyperclip
 
 from config import Config
+from password_exporter import PasswordExporter
 
 
 def get_characters(
@@ -60,6 +61,8 @@ def main():
         print(f"{password} copied to clipboard")
     else:
         print(password)
+    if cfg.export_to_file:
+        PasswordExporter.export(password)
     cfg.save()
 
 
